@@ -1,7 +1,12 @@
 # Untracked files in MPLABX projects
+# https://microchipdeveloper.com/faq:72 
+
 /**/build
-/**/nbproject
+/**/debug
 /**/dist
-/**/Makefile
+/**/nbproject/*
+!/**/nbproject/*.xml
 
-
+# Untracked proteus files
+*.pdsprj
+*.pdsbak
