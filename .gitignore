@@ -6,6 +6,7 @@
 /**/[Pp]ro/production/*
 /**/dist
 **/Makefiles
+*.xml
 
 # Uncomment these to include hex/elf files
 #!/**/[Ff]ree/production/*.hex
