@@ -4,9 +4,8 @@
 /**/nbproject/*.xml
 /**/[Ff]ree/production/*
 /**/[Pp]ro/production/*
-/**/.generated_files/*
 /**/dist
-/**/Makefiles
+**/Makefiles
 
 # Uncomment these to include hex/elf files
 #!/**/[Ff]ree/production/*.hex
