@@ -5,7 +5,7 @@
 /**/[Ff]ree/production/*
 /**/[Pp]ro/production/*
 /**/.generated_files/*
-!/**/dist/*
+/**/dist
 
 # Uncomment these to include hex/elf files
 #!/**/[Ff]ree/production/*.hex
