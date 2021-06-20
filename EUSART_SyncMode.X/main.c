@@ -6,7 +6,7 @@
  */
 
 
-#include "transmitter_header.h"
+#include "main_header.h"
 
 void main(void)
 {
