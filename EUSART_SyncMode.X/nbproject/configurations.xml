@@ -15,6 +15,7 @@
                    projectFiles="true">
       <itemPath>eusart.c</itemPath>
       <itemPath>main.c</itemPath>
+      <itemPath>setup.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

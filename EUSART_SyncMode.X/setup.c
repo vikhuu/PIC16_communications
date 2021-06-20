@@ -1,5 +1,5 @@
-#ifndef SETUP_IO
-#define SETUP_IO
+#ifndef SETUP_H
+#define SETUP_H
 
 #include <xc.h> // include processor files - each processor file is guarded.
 #include <stdio.h>
@@ -14,7 +14,7 @@ void Setup_Interrupt( void )
         /* SETUP INTCON
      -   GIE  - (1) Enable: Global Interrupt            
      -   PEIE - (1) Enable: Peripheral Interrupt         
-     -   T0IE - (1) Disable: TMR0 overflow Interrupt    
+     -   T0IE - (1) Enable: TMR0 overflow Interrupt    
      -   INTE - (0) Disable: External Interrupt         
      -   RBIE - (0) Disable: PORTB change Interrupt     
      -   RBIF - (0) Clear: TMR0 overflow Interrupt flag 
