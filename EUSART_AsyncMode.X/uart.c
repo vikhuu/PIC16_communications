@@ -15,7 +15,7 @@ void UART_Initialize( void )
 {
     /*  Setup the EUSART module   */
     
-    // ABDOVF no_overflow; RCIDL idle; BRG16 8-bit; ABDEN disable
+    // ABDOVF no_overflow; RCIDL idle; BRG16 16-bit; ABDEN disable
     BAUDCTL = 0x40;
     
     // SPEN enable; RX9 8-bit; CREN enable; ADDEN disable; OERR no_error

@@ -7,12 +7,54 @@
 #include <stdio.h>
 #endif
 
+#define EUSART_SYNC_MODE    // Undefine if use as Asynchronous Mode
+#define EUSART_MASTER       // Undefine if use as SLAVE unit
 
 void EUSART_Initialize( void )
 {
     /*  Setup the EUSART module   */
     
-    // ABDOVF no_overflow; RCIDL idle; BRG16 8-bit; ABDEN disable
+#ifdef EUSART_SYNC_MODE
+    // SCKP non-inverted; BRG16 16-bit
+    BAUDCTL = 0x40;    
+    
+    /*  Setup TXSTA 
+    -   CSRC  (/) : Master/Slave mode 
+    -   TX9   (/) : 9-bit/8-bit Transmission
+    -   TXEN  (1) : Transmit enable
+    -   SYNC  (1) : Synchronous Mode
+    -   SENDB (0) : Don't care
+    -   BRGH  (0) : Unused
+    -   TRMT  (0) : TST is empty
+    -   TX9D  (0) : 9th bit of Transmit data
+     */ 
+    #ifdef EUSART_MASTER
+    TXSTA = 0xF0; // 0b11110000
+    #else
+    TXSTA = 0x30; // 0b00110000
+    #endif
+    
+    /*  Setup RCSTA
+    -   SPEN  (1) : Serial Port enable
+    -   RX9   (/) : 9-bit/8-bit Reception
+    -   SREN  (1) : Enable Single receive
+    -   CREN  (0) : Disable Continuous receive
+    -   ADDEN (0) : Don't care
+    -   FRRR  (0) : Framing error
+    -   OERR  (0) : Over-run error
+    -   RX9D  (0) : 9th bit of Received data     
+     */
+    #ifdef EUSART_MASTER
+    RCSTA = 0xA0; // 0b10100000
+    #else
+    RCSTA = 0xE0; // 0b11100000
+    #endif    
+    
+    // Baud rate = 9600; Sync mode; SPBRG = 103; %error 0.16; Fosc = 4Mhz
+    SPBRG = 103;
+    
+#else
+    // ABDOVF no_overflow; RCIDL idle; BRG16 16-bit; ABDEN disable
     BAUDCTL = 0x40;
     
     // SPEN enable; RX9 8-bit; CREN enable; ADDEN disable; OERR no_error
@@ -22,8 +64,8 @@ void EUSART_Initialize( void )
     TXSTA = 0x26;
     
     // Baud rate = 9600; SPBRG = 25; %error 0.16; Fosc = 4Mhz
-    SPBRG = 0x19;
-    
+    SPBRG = 25;
+#endif
 }
 
 uint8_t EUSART_Read( void )
