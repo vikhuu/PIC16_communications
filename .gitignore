@@ -8,6 +8,6 @@
 !/**/nbproject/*.xml
 
 # Untracked proteus files
-*.pdsprj
+#*.pdsprj
 *.pdsbak
 *.workspace
