@@ -40,4 +40,21 @@
 
 #define _XTAL_FREQ 4000000 // HS = 4MHz
 
+/*  Function Prototype  */
+void Setup_Interrupt( void );
+void Setup_PORT( void );
 
+/*  External variable Declaration  */
+
+// Declare bit-field type
+typedef struct 
+{
+    unsigned Bit0 : 1;
+    unsigned Bit1 : 1;
+    unsigned Bit2 : 1;
+    unsigned Bit3 : 1; 
+    unsigned Bit4 : 1;
+    unsigned Bit5 : 1;
+    unsigned Bit6 : 1;
+    unsigned Bit7 : 1;     
+} bitfield_t;
