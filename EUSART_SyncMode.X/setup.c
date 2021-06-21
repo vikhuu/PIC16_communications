@@ -17,7 +17,7 @@ void Setup_Interrupt( void )
      -   T0IE  (1) Enable: TMR0 overflow Interrupt    
      -   INTE  (0) Disable: External Interrupt         
      -   RBIE  (0) Disable: PORTB change Interrupt     
-     -   RBIF  (0) Clear: TMR0 overflow Interrupt flag 
+     -   T0IF  (0) Clear: TMR0 overflow Interrupt flag 
      -   INTF  (0) Clear: External Interrupt flag      
      -   RBIF  (0) Clear: PORTB change Interrupt flag  
     */

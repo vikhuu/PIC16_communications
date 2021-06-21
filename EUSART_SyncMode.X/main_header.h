@@ -43,6 +43,7 @@
 /*  Function Prototype  */
 void Setup_Interrupt( void );
 void Setup_PORT( void );
+void Setup_TMR0( void );
 
 /*  External variable Declaration  */
 
