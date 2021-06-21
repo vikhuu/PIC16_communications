@@ -59,11 +59,12 @@ uint16_t Read_from_slave( void )
     uint8_t buffer = 0;
     
     TXSTAbits.TX9D = 1; // read 
-    
+   
     _delay( 1 );
     EUSART_Write(0x00);
     
     // wait
+    SREN = 1; // single-character received
     buffer = EUSART_Read();
     
     return buffer;

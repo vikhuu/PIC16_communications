@@ -40,7 +40,7 @@
 
 #define _XTAL_FREQ 4000000 // HS = 4MHz
 
-//#define EUSART_SLAVE   // define EUSART_SLAVE to build SLAVE's HEX file 
+#define EUSART_SLAVE   // define EUSART_SLAVE to build SLAVE's HEX file 
 
 /*  Function Prototype  */
 void Setup_Interrupt( void );
