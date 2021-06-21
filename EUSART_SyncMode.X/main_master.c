@@ -12,7 +12,6 @@
 /*  Define External Variables  */
 volatile uint16_t counterTMR0 = 0; // A global variable to store the time 
                                    // that has elapse
-uint8_t rx_buffer = 0;
 
 /*  Declare Prototype   */
 
@@ -22,7 +21,9 @@ void main(void)
     Setup_PORT();
     Setup_Interrupt();  
     Setup_TMR0();
-   
+    
+    EUSART_Initialize();
+            
     uint16_t temp_tmr0 = 0;
     
     while(1)
@@ -31,9 +32,9 @@ void main(void)
         {
             temp_tmr0 = counterTMR0;
             //
-            
-            
-            
+            PORTD = Read_from_slave;
+            //
+            Write_to_slave( PORTB );            
         }
     }
 }
@@ -55,12 +56,25 @@ void __interrupt() isr()
 /*  Define Functions   */
 uint16_t Read_from_slave( void )
 {
+    uint8_t buffer = 0;
     
+    TXSTAbits.TX9D = 1; // read 
+    
+    _delay( 1 );
+    EUSART_Write(0x00);
+    
+    // wait
+    buffer = EUSART_Read();
+    
+    return buffer;
 }
 
-void Write_to_slave( uint8_t )
+void Write_to_slave( uint8_t tx_data )
 {
+    TXSTAbits.TX9D = 0; // write
     
+    _delay( 1 );
+    EUSART_Write( tx_data );
 }
 
 #endif

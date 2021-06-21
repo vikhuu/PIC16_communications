@@ -46,8 +46,15 @@
 void Setup_Interrupt( void );
 void Setup_PORT( void );
 void Setup_TMR0( void );
+
+//
 uint16_t Read_from_slave( void );
 void Write_to_slave( uint8_t );
+
+//
+void EUSART_Initialize( void );
+uint8_t EUSART_Read( void );
+void EUSART_Write( uint8_t );
 
 /*  External variable Declaration  */
 

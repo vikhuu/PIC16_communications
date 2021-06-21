@@ -8,7 +8,7 @@
 #endif
 
 #define EUSART_SYNC_MODE    // Undefine if use as Asynchronous Mode
-#define EUSART_MASTER       // Undefine if use as SLAVE unit
+//#define EUSART_SLAVE      // Undefine if use as MASTER unit
 
 void EUSART_Initialize( void )
 {
@@ -28,7 +28,7 @@ void EUSART_Initialize( void )
     -   TRMT  (0) : TST is empty
     -   TX9D  (0) : 9th bit of Transmit data
      */ 
-    #ifdef EUSART_MASTER
+    #ifndef EUSART_SLAVE
     TXSTA = 0xF0; // 0b11110000
     #else
     TXSTA = 0x30; // 0b00110000
@@ -44,7 +44,7 @@ void EUSART_Initialize( void )
     -   OERR  (0) : Over-run error
     -   RX9D  (0) : 9th bit of Received data     
      */
-    #ifdef EUSART_MASTER
+    #ifndef EUSART_SLAVE
     RCSTA = 0xA0; // 0b10100000
     #else
     RCSTA = 0xE0; // 0b11100000
