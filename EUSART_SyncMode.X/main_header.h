@@ -40,10 +40,14 @@
 
 #define _XTAL_FREQ 4000000 // HS = 4MHz
 
+//#define EUSART_SLAVE   // define EUSART_SLAVE to build SLAVE's HEX file 
+
 /*  Function Prototype  */
 void Setup_Interrupt( void );
 void Setup_PORT( void );
 void Setup_TMR0( void );
+uint16_t Read_from_slave( void );
+void Write_to_slave( uint8_t );
 
 /*  External variable Declaration  */
 

@@ -5,23 +5,36 @@
  * Created on June 16, 2021, 8:46 PM
  */
 
-
 #include "main_header.h"
-#define EUSART_MASTER       // Undefine if use as SLAVE unit
+
+#ifndef EUSART_SLAVE
 
 /*  Define External Variables  */
 volatile uint16_t counterTMR0 = 0; // A global variable to store the time 
                                    // that has elapse
+uint8_t rx_buffer = 0;
+
+/*  Declare Prototype   */
+
 
 void main(void)
 {
-    Setup_Interrupt();
     Setup_PORT();
+    Setup_Interrupt();  
     Setup_TMR0();
+   
+    uint16_t temp_tmr0 = 0;
     
     while(1)
     {
-        
+        if( (counterTMR0 - temp_tmr0) >= 100 )  // Every 100ms do...
+        {
+            temp_tmr0 = counterTMR0;
+            //
+            
+            
+            
+        }
     }
 }
 
@@ -29,7 +42,6 @@ void main(void)
 /*  Define Interrupt Service Routine  */
 void __interrupt() isr()
 {
-#ifdef EUSART_MASTER
     // Process Interrupt of TMR0
     if( INTCONbits.T0IE && INTCONbits.T0IF )
     {
@@ -38,5 +50,17 @@ void __interrupt() isr()
         TMR0 = 13;
         counterTMR0++;
     }
-#endif  
 }
+
+/*  Define Functions   */
+uint16_t Read_from_slave( void )
+{
+    
+}
+
+void Write_to_slave( uint8_t )
+{
+    
+}
+
+#endif
